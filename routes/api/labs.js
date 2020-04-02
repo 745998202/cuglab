@@ -48,7 +48,7 @@ router.post('/add',passport.authenticate("jwt",{session:false}),(req,res)=>{
 // $route : /api/labs/delete/:id
 // @desc :  删除某个实验室
 // @access : private
-router.post('/delete/:id',passport.authenticate("jwt",{session:false}),(req,res)=>{
+router.delete('/delete/:id',passport.authenticate("jwt",{session:false}),(req,res)=>{
     // 数据校验
     Lab.findOneAndRemove({_id:req.params.id},{useFindAndModify:false})
     .then(lab=>res.json(lab)).catch(err => res.status(404).json("删除失败"));

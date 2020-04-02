@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 //引入部分路由
+const admin = require('./routes/api/admin');
 const users = require('./routes/api/users');
 const labs = require('./routes/api/labs');
 const books = require('./routes/api/books');
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 require('./config/passport')(passport);
 //路由配置
+app.use('/api/admin',admin);
 app.use('/api/users',users);
 app.use('/api/labs',labs);
 app.use('/api/books',books);
