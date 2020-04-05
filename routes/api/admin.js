@@ -53,7 +53,7 @@ router.delete('/delete/:id',(req,res)=>{
 
 router.post('/update/:id',(req,res)=>{
     const UserFields = {};
-    if(req.body.username)   UserFields.username = req.body.lab_name;
+    if(req.body.username)   UserFields.username = req.body.username;
     if(req.body.email)   UserFields.email = req.body.email;
     if(req.body.password)   UserFields.password = req.body.password;
     if(req.body.identity)   UserFields.identity = req.body.identity;

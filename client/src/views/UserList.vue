@@ -1,14 +1,5 @@
 <template>
     <div class="fillContainer">
-        <div>
-            <el-form :inline="true" ref="add_data">
-                <el-form-item class="btnRight">
-                    <el-button type="primary" size="small" icon="view" 
-                    v-if="user.identity == 'superadmin'"
-                    @click="handleAdd()" >添加</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
         <div class="table_container">
             <el-table
                 v-if="tableData.length > 0"
@@ -17,39 +8,33 @@
                 border
                 style="width: 100%">
                 <el-table-column
-                    prop="lab_name"
+                    prop="username"
                     align="center"
-                    label="实验室名"
+                    label="用户名"
                     width="150">
                 </el-table-column>
                 <el-table-column
-                    prop="info"
+                    prop="email"
                     align="center"
-                    label="实验室信息"
+                    label="邮箱"
                     width="350">
                 </el-table-column>
                 <el-table-column
-                    prop="picture"
+                    prop="avatar"
                     align="center"
-                    label="实验室内景"
+                    label="用户头像"
                     width="200">
                 </el-table-column>
                 <el-table-column
-                    prop="capacity"
+                    prop="phone"
                     align="center"
-                    label="容量"
+                    label="用户电话"
                     width="200">
                 </el-table-column>
                 <el-table-column
-                    prop="owner_1"
+                    prop="identity"
                     align="center"
-                    label="主负责人"
-                    width="170">
-                </el-table-column>
-                <el-table-column
-                    prop="owner_2"
-                    align="center"
-                    label="副负责人"
+                    label="身份"
                     width="170">
                 </el-table-column>
                 <el-table-column
@@ -89,16 +74,16 @@
             </el-row>
             
         </div>
-        <LabDialog :dialog="dialog" :formData="formData" @update="getLabList"></LabDialog>
+        <UserDialog :dialog="dialog" :formData="formData" @update="getUserList"></UserDialog>
     </div>
 </template>
 
 <script>
 // 引入实验室Dialog
-import LabDialog from '../components/LabDialog'
+import UserDialog from '../components/UserDialog'
 
 export default {
-    name:"lablist",
+    name:"userlist",
     data(){
         return {
             // 筛选的数据
@@ -114,19 +99,19 @@ export default {
             //存储表格的数据
             formData:{
                 id:"",
-                lab_name:"",
-                owner_1:"",
-                owner_2:"",
-                picture:"",
-                info:"",
-                capacity:""
+                username:"",
+                email:"",
+                password:"",
+                avatar:"",
+                phone:"",
+                identity:""
             },
             tableData:[],
             allTableData:[],
             // 添加部分dialog属性
             dialog:{
                 show:false,
-                title:'',
+                title:'修改用户信息',
                 option:'edit'
             }
         };
@@ -137,11 +122,11 @@ export default {
         }
     },
     created(){
-        this.getLabList();
+        this.getUserList();
     },
     methods:{
-        getLabList(){
-            this.$axios.get("/api/labs")
+        getUserList(){
+            this.$axios.get("/api/admin")
             .then(res=>{
                 this.allTableData = res.data;
                 this.filterTableData = res.data;
@@ -152,40 +137,25 @@ export default {
         handleEdit(index,row){
             this.dialog = {
                 show : true,
-                title: "修改实验室数据",
+                title: "修改用户信息",
                 option: "edit"
             };
             this.formData = {
-                lab_name:row.lab_name,
-                info:row.info,
-                picture:row.picture,
-                capacity:row.capacity,
-                owner_1:row.owner_1,
-                owner_2:row.owner_2,
-                id:row._id
+                id:row._id,
+                username:row.username,
+                email:row.email,
+                password:row.password,
+                avatar:row.avatar,
+                phone:row.phone,
+                identity:row.identity
             };
         },
         handleDelete(index,row){
-            this.$axios.delete(`/api/labs/delete/${row._id}`)
+            this.$axios.delete(`/api/admin/delete/${row._id}`)
             .then(res=>{
                 this.$message('删除成功!');
-                this.getLabList();
+                this.getUserList();
             });
-        },handleAdd(){
-            this.dialog = {
-                show : true,
-                title: "添加实验室",
-                option: "add"
-            };
-            this.formData = {
-                lab_name:"",
-                info:"",
-                picture:"",
-                capacity:"",
-                owner_1:"",
-                owner_2:"",
-                id:""
-            };
         },
         handleSizeChange(page_size){
             // 切换size
@@ -223,7 +193,7 @@ export default {
         }
     },
     components:{
-        LabDialog
+        UserDialog
     }
 }
 </script>

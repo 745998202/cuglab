@@ -51,8 +51,8 @@ export default {
         {
           icon: "fa-asterisk",
           name: "信息管理",
-          path: "info",
-          children: [{ path: "infoshow", name: "用户管理" }]
+          path: "userlist",
+          children: [{ path: "userlist", name: "用户管理" }]
         }
       ]
     };

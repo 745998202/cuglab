@@ -9,6 +9,7 @@ import Index from '../views/Index.vue'
 import FundList from "../views/FundList.vue"
 import InfoShow from "../views/InfoShow.vue"
 import LabList from "../views/LabList.vue"
+import UserList from "../views/UserList.vue"
 
 Vue.use(VueRouter)
 
@@ -26,7 +27,8 @@ const routes = [
       {path:"/home",name:"home",component:Home},
       {path:"/infoshow",name:"infoshow",component:InfoShow},
       {path:"/fundlist",name:"fundlist",component:FundList},
-      {path:"/lablist",name:"lablist",component:LabList}
+      {path:"/lablist",name:"lablist",component:LabList},
+      {path:"/userlist",name:"userlist",component:UserList}
     ]
   },
   {
@@ -43,7 +45,7 @@ const routes = [
     path: '/login',
     name: 'login',
     component:Login
-  },
+  }
 ]
 
 const router = new VueRouter({
