@@ -3,14 +3,31 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from '../views/Register.vue'
 import NotFound from '../views/404.vue'
+import Login  from '../views/Login.vue'
+import Index from '../views/Index.vue'
+
+import FundList from "../views/FundList.vue"
+import InfoShow from "../views/InfoShow.vue"
+import LabList from "../views/LabList.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect:'/index'
+  },
+  {
+    path:'/index',
+    name:'index',
+    component: Index,
+    children:[
+      {path:"",component:Home},
+      {path:"/home",name:"home",component:Home},
+      {path:"/infoshow",name:"infoshow",component:InfoShow},
+      {path:"/fundlist",name:"fundlist",component:FundList},
+      {path:"/lablist",name:"lablist",component:LabList}
+    ]
   },
   {
     path: '/register',
@@ -21,7 +38,12 @@ const routes = [
     path: '*',
     name: '/404',
     component: NotFound
-  }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component:Login
+  },
 ]
 
 const router = new VueRouter({
@@ -30,4 +52,13 @@ const router = new VueRouter({
   routes
 })
 
+// 路由守卫
+router.beforeEach((to,from,next)=>{
+  const isLogin = localStorage.eleToken ? true : false;//取出当前token
+  if(to.path == '/login' || to.path == '/register'){
+    next();
+  }else{
+    isLogin ? next() : next("/login"); 
+  }
+})
 export default router

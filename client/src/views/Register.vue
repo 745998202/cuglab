@@ -48,7 +48,8 @@ export default {
                 email:"",
                 phone:"",
                 password:"",
-                password2:""
+                password2:"",
+                identity:"default"
             },
             rules:{
                 username:[
@@ -115,10 +116,15 @@ export default {
         submitForm(formName){
             this.$refs[formName].validate((valid)=>{
                 if(valid){
-                    alert('submit!');
-                }else{
-                    console.log('error submit!!');
-                    return false;
+                    this.$axios.post("/api/users/register",this.registerUser)
+                    .then(res=>{
+                        this.$message({
+                            message:"账号注册成功",
+                            type:"success"
+                        });
+                    })
+                    //如果注册成功则跳转到这个页面
+                    this.$router.push('/');
                 }
             });
         }

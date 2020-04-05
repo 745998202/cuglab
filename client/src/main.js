@@ -1,11 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-// axios 请求
-import axios from './http'
-// element-ui
-import ElementUI from 'element-ui'
+import Vue from 'vue';
+import App from './App.vue';
+import axios from './http';
+import router from './router';
+import store from './store';
+import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 // 中间件的使用
