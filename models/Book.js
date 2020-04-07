@@ -16,7 +16,7 @@ const BookSchema = new Schema({
         required: true
     },
     part:{//预定时间段
-        type: String,
+        type: Array,
         required: true
     },
     book_user:{//预约人

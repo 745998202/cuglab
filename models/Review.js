@@ -20,7 +20,7 @@ const ReviewSchema = new Schema({
         required: true
     },
     book_part:{//预约时间段
-        type: String,
+        type: Array,
         required: true
     },
     book_user:{ //预约人
