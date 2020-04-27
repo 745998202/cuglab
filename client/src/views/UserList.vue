@@ -11,30 +11,35 @@
                     prop="username"
                     align="center"
                     label="用户名"
+                    :show-overflow-tooltip="true"
                     width="150">
                 </el-table-column>
                 <el-table-column
                     prop="email"
                     align="center"
                     label="邮箱"
+                    :show-overflow-tooltip="true"
                     width="350">
                 </el-table-column>
                 <el-table-column
                     prop="avatar"
                     align="center"
                     label="用户头像"
+                    :show-overflow-tooltip="true"
                     width="200">
                 </el-table-column>
                 <el-table-column
                     prop="phone"
                     align="center"
                     label="用户电话"
+                    :show-overflow-tooltip="true"
                     width="200">
                 </el-table-column>
                 <el-table-column
                     prop="identity"
                     align="center"
                     label="身份"
+                    :show-overflow-tooltip="true"
                     width="170">
                 </el-table-column>
                 <el-table-column

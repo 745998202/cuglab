@@ -3,31 +3,35 @@
         <el-row v-for="lab in LabsData" :key="lab._id">
             <el-col :span="24">
                 <el-card :body-style="{ padding: '10px' }"  shadow="always">
-                    <el-col :span="8">
+                    <el-col :span="6">
                         <el-image
                             style="width: 400px; height: 300px; border-radius:20px; "
                             src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1808242258,1926634704&fm=26&gp=0.jpg"
                             fit="fill">
                             </el-image>
                     </el-col>
-                    <el-col :span="16">
-                        <div style="padding: 14px;">
+                    <el-col :span="18">
+                        <div>
                             <el-row class="labsItem">
                                 <el-col :span="1"><i class="el-icon-s-home"></i></el-col>
                                 <el-col :span="10"><span>实验室名：{{ lab.lab_name}}</span></el-col>
                             </el-row>
+                            <el-divider></el-divider>
                             <el-row class="labsItem">
                                 <el-col :span="1"><i class="el-icon-info"></i></el-col>
                                 <el-col :span="10"><span>实验室信息：{{ lab.info}}</span></el-col>
                             </el-row>
+                            <el-divider></el-divider>
                             <el-row class="labsItem">
                                 <el-col :span="1"><i class="el-icon-s-cooperation"></i></el-col>
                                 <el-col :span="10"><span>容量：{{ lab.capacity}}</span></el-col>
                             </el-row>
+                            <el-divider></el-divider>
                             <el-row class="labsItem">
                                 <el-col :span="1"><i class="el-icon-user-solid"></i></el-col>
                                 <el-col :span="10"><span>主负责人：{{ lab.owner_1}}</span></el-col>
                             </el-row>
+                            <el-divider></el-divider>
                             <el-row class="labsItem">
                                 <el-col :span="1"><i class="el-icon-user"></i></el-col>
                                 <el-col :span="10"><span>副负责人：{{ lab.owner_2}}</span></el-col>
@@ -232,6 +236,7 @@ export default {
     height: 100%;
     padding: 20px;
     box-sizing:border-box;
+    font-family: "微软雅黑";
 }
   .time {
     font-size: 13px;
@@ -263,6 +268,6 @@ export default {
   }
 
   .labsItem{
-      height: 47px;
+      
   }
 </style>

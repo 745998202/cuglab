@@ -20,36 +20,42 @@
                     prop="lab_name"
                     align="center"
                     label="实验室名"
+                    :show-overflow-tooltip="true"
                     width="150">
                 </el-table-column>
                 <el-table-column
                     prop="info"
                     align="center"
                     label="实验室信息"
+                    :show-overflow-tooltip="true"
                     width="350">
                 </el-table-column>
                 <el-table-column
                     prop="picture"
                     align="center"
                     label="实验室内景"
+                    :show-overflow-tooltip="true"
                     width="200">
                 </el-table-column>
                 <el-table-column
                     prop="capacity"
                     align="center"
                     label="容量"
+                    :show-overflow-tooltip="true"
                     width="200">
                 </el-table-column>
                 <el-table-column
                     prop="owner_1"
                     align="center"
                     label="主负责人"
+                    :show-overflow-tooltip="true"
                     width="170">
                 </el-table-column>
                 <el-table-column
                     prop="owner_2"
                     align="center"
                     label="副负责人"
+                    :show-overflow-tooltip="true"
                     width="170">
                 </el-table-column>
                 <el-table-column
